@@ -9,6 +9,7 @@ pin: true
 
 ### 알고리즘 시뮬레이션
 
+{% raw %}
 <style>
   canvas {
     width: 100%;
@@ -196,7 +197,7 @@ pin: true
   resizeCanvas();
   drawGraph();
 </script>
-
+{% endraw %}
 
 ---
 
