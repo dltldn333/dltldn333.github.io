@@ -7,11 +7,8 @@
   height: v.$topbar-height;
   background-color: var(--topbar-bg);
 
-  @include bp.lt(bp.get(lg)) {
-    @include mx.slide(top 0.2s ease);
-
-    left: 0;
-  }
+  @include mx.slide(top 0.2s ease);
+  left: 0;
 }
 
 #topbar {
@@ -35,30 +32,15 @@
       }
     }
 
-    @include bp.lt(bp.get(lg)) {
-      display: none;
-    }
-
-    @include bp.between(bp.get(lg), calc(#{bp.get(xl)} - 1px)) {
-      width: 65%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      word-break: keep-all;
-      white-space: nowrap;
-    }
+    display: none; // 항상 숨김
   }
 
-  @include bp.lte(bp.get(md)) {
-    @include mx.max-w-100;
-  }
-
-  @include bp.lt(bp.get(lg)) {
-    max-width: 100%;
-  }
+  @include mx.max-w-100;
+  max-width: 100%;
 }
 
 #topbar-title {
-  display: none;
+  display: block;
   font-size: 1.1rem;
   font-weight: 600;
   font-family: sans-serif;
@@ -66,17 +48,12 @@
   text-align: center;
   width: 70%;
   word-break: keep-all;
-
-  @include bp.lt(bp.get(lg)) {
-    display: block;
-  }
-
-  @include bp.lg {
-    text-align: left;
-  }
 }
 
-#sidebar-trigger,
+#sidebar-trigger {
+  display: block;
+}
+
 #search-trigger {
   display: none;
 
