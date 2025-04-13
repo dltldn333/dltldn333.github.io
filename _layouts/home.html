@@ -46,7 +46,38 @@ refactor: true
     {% assign posts = posts | push: all_normal[i] %}
   {% endfor %}
 {% endif %}
+<div id="home-face">
+  <h2 style="font-weight: 900; font-size: 52px;">
+    “What I cannot create,<br> I do not understand.”
+  </h2>
+  <span style="font-size: 24px;font-weight: 700;">-Richard Feynman-</span>
+</div>
 
+<!-- 새로운 기능 시작 -->
+
+
+{% assign pinned = site.posts | where: "pin", true | first %}
+
+<h2 class="pinned-title">
+  <a style="color: black; font-size: 36px; font-weight: 900;" href="{{ pinned.url | relative_url }}">{{ pinned.title }}</a>
+</h2>
+
+
+<div class="main-with-cover">
+  <!-- 고정 이미지 -->
+  <div class="cover-thumbnail">
+    <div class="thumbnail-image" style="background-image: url('{{
+      pinned.image.path | default: pinned.image | default: site.cover_image | relative_url
+    }}');"></div>
+  </div>
+
+</div>
+
+
+
+<!-- 새로운 기능 끝-->
+
+<h2>게시물 목록</h2>
 <div id="post-list" class="flex-grow-1 px-xl-1">
   {% for post in posts %}
     <article class="card-wrapper card">

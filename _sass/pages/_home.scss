@@ -171,3 +171,58 @@
     }
   }
 }
+
+.main-with-cover {
+  display: flex;
+  align-items: stretch; // 세로 방향 정렬 유지
+  flex-direction: row; // 기본값이지만 명시적으로!
+  gap: 2rem; // 이미지와 인삿말 사이 간격
+
+  @include bp.lt(bp.get(lg)) {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+.cover-thumbnail {
+  width: 500px;
+  height: 400px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  background-color: black;
+  border-radius: 1rem;
+  overflow: hidden;
+
+  @include bp.lt(bp.get(lg)) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    position: static;
+  }
+
+  .thumbnail-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+}
+
+.home-greeting {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+
+  @include bp.lt(bp.get(lg)) {
+    padding: 1.5rem 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+}

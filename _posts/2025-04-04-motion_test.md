@@ -2,7 +2,9 @@
 title: "로띠 테스트"
 date: 2025-04-04
 tags: [three.js, 웹개발]
-thumbnail: /assets/img/thumb-three.jpg
+image:
+  path: /assets/img/건물 외부 정면.jpg
+  alt: [건물이미지로 테스트]
 excerpt: "three.js는 웹에서 3D를 쉽게 구현할 수 있는 자바스크립트 라이브러리입니다."
 pin: true
 ---

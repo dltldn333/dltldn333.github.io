@@ -416,11 +416,11 @@ mjx-container {
   }
 
   @include bp.lg {
-    margin-left: v.$sidebar-width;
+    margin-left: calc(v.$sidebar-width - 40px); // ← 20px 정도 덜 밀리게
   }
 
   @include bp.xxxl {
-    margin-left: v.$sidebar-width-large;
+    margin-left: calc(v.$sidebar-width-large - 40px);
   }
 
   > .container {
@@ -473,4 +473,17 @@ mjx-container {
   > :not(script) {
     margin-top: 3rem;
   }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
+  font-weight: 700; // 예: 전체 중간 굵기
+}
+p {
+  font-weight: 500;
 }

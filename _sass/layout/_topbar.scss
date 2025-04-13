@@ -52,6 +52,10 @@
 
 #sidebar-trigger {
   display: block;
+
+  [sidebar-display] & {
+    display: none; // 사이드바 열리면 안보이게
+  }
 }
 
 #search-trigger {
