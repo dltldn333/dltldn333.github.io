@@ -14,12 +14,12 @@ timezone:
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: siwoo.devlog() # the main title
+title: siwoo.devlog # the main title
 
-tagline: 이것도 나중에 # it will display as the subtitle
+tagline: 창조는 모방에서 시작된다.<br>그것이 내가 배우는 이유다.
 
 description: >- # used by seo meta and the atom feed
-  나중에 적을게요.
+  이시우의 개발일지
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
@@ -224,5 +224,3 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
-
-

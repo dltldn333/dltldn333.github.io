@@ -15,7 +15,11 @@ layout: compress
 <!-- `site.alt_lang` can specify a language different from the UI -->
 <html lang="{{ page.lang | default: site.alt_lang | default: site.lang }}" {{ prefer_mode }}>
   {% include head.html %}
-
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+</head>
   <body>
     {% include sidebar.html lang=lang %}
 
@@ -82,5 +86,10 @@ layout: compress
     {% endfor %}
 
     {% include_cached search-loader.html lang=lang %}
+
+    <!-- 슬라이드 js -->
+    {% if page.url == '/' %}
+    <script src="{{ '/assets/js/pinned-slider.js' | relative_url }}"></script>
+  {% endif %}
   </body>
 </html>

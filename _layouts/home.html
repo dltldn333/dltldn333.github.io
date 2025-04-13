@@ -46,34 +46,78 @@ refactor: true
     {% assign posts = posts | push: all_normal[i] %}
   {% endfor %}
 {% endif %}
-<div id="home-face">
-  <h2 style="font-weight: 900; font-size: 52px;">
+
+<!-- 파인만 선생님 -->
+<div id="feynman">
+  <h2 
+  class="special-gothic-expanded-one-regular typing"
+  style=" font-size: 48px; color: black; margin-bottom: 10px; margin-top: 100px;">
     “What I cannot create,<br> I do not understand.”
   </h2>
-  <span style="font-size: 24px;font-weight: 700;">-Richard Feynman-</span>
+  <span
+  class="special-gothic-expanded-one-regular "
+  style="font-size: 24px;font-weight: 300;">-Richard Feynman-</span>
 </div>
 
 <!-- 새로운 기능 시작 -->
 
-
-{% assign pinned = site.posts | where: "pin", true | first %}
-
-<h2 class="pinned-title">
-  <a style="color: black; font-size: 36px; font-weight: 900;" href="{{ pinned.url | relative_url }}">{{ pinned.title }}</a>
-</h2>
-
+{% assign pinned_posts = site.posts | where: "pin", true | slice: 0, 5 %}
 
 <div class="main-with-cover">
-  <!-- 고정 이미지 -->
-  <div class="cover-thumbnail">
-    <div class="thumbnail-image" style="background-image: url('{{
-      pinned.image.path | default: pinned.image | default: site.cover_image | relative_url
-    }}');"></div>
+  <!-- 제목 -->
+  <div class="slide-title">
+    {% for post in pinned_posts limit:5 %}
+      <div class="slide-title-item {% if forloop.first %}active{% endif %}">
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      </div>
+      {% endfor %}
+    </div>
+    
+    <!-- 이미지 + 태그 나란히 -->
+    <div class="cover-slider-layout">
+      <!-- 이미지 -->
+      <div id="cover-container">
+        <div class="cover-thumbnail">
+          {% for post in pinned_posts limit:5 %}
+          {% assign image_path = post.image.path | default: post.image %}
+          <div class="slide-item">
+            <a href="{{ post.url | relative_url }}">
+              <div class="thumbnail-slide {% if forloop.first %}active{% endif %}"
+                   style="background-image: url('{{ image_path | relative_url }}');">
+              </div>
+            </a>
+            <div class="slide-hover-content {% if forloop.first %}active{% endif %}">
+              {{ post.excerpt }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      
+      
+    </div>
+
+    <!-- 태그 -->
+    <div class="slide-tags">
+      {% for post in pinned_posts limit:5 %}
+        <div class="slide-tags-item {% if forloop.first %}active{% endif %}">
+          {% for tag in post.tags %}
+          {% assign url = tag | slugify | url_encode | prepend: '/tags/' | append: '/' %}
+          <a class="post-tag btn slide-tag" href="{{ url | relative_url }}"><span>#{{ tag }}</span></a>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
   </div>
 
+  <!-- 슬라이드 컨트롤 -->
+  <div class="slider-controls">
+    <button id="prevSlide" aria-label="이전 슬라이드">◀</button>
+    <div id="playDiv">
+      <button id="togglePlay" aria-label="슬라이드 정지">⏸</button>
+    </div>
+    <button id="nextSlide" aria-label="다음 슬라이드">▶</button>
+  </div>  
 </div>
-
-
 
 <!-- 새로운 기능 끝-->
 

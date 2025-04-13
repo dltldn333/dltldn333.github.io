@@ -1,7 +1,7 @@
 ---
 title: "로띠 테스트"
 date: 2025-04-04
-tags: [three.js, 웹개발]
+tags: [웹개발]
 image:
   path: /assets/img/건물 외부 정면.jpg
   alt: [건물이미지로 테스트]
