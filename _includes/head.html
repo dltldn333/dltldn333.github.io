@@ -123,4 +123,17 @@
   {% endif %}
 
   {% include metadata-hook.html %}
+
+  <!-- three.js -->
+  <!-- {% if page.layout == "home" %}
+  <script type="module" src="{{ '/assets/js/three-model.js' | relative_url }}"></script>
+{% endif %} -->
+
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js"
+    }
+  }
+  </script>
 </head>

@@ -16,7 +16,7 @@ timezone:
 
 title: siwoo.devlog # the main title
 
-tagline: 창조는 모방에서 시작된다.<br>그것이 내가 배우는 이유다.
+tagline:
 
 description: >- # used by seo meta and the atom feed
   이시우의 개발일지
@@ -98,7 +98,7 @@ theme_mode: light
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: "/assets/img/feyn.png"
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
@@ -224,3 +224,5 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+head_custom: true

@@ -59,6 +59,9 @@ refactor: true
   style="font-size: 24px;font-weight: 300;">-Richard Feynman-</span>
 </div>
 
+
+
+
 <!-- 새로운 기능 시작 -->
 
 {% assign pinned_posts = site.posts | where: "pin", true | slice: 0, 5 %}
@@ -67,46 +70,51 @@ refactor: true
   <!-- 제목 -->
   <div class="slide-title">
     {% for post in pinned_posts limit:5 %}
-      <div class="slide-title-item {% if forloop.first %}active{% endif %}">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    <div class="slide-title-item {% if forloop.first %}active{% endif %}">
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </div>
+    {% endfor %}
+  </div>
+  
+  <!-- 이미지 + 태그 나란히 -->
+  <div class="cover-slider-layout">
+    <!-- 이미지 -->
+    <div id="cover-container">
+      <div class="cover-thumbnail">
+        {% for post in pinned_posts limit:5 %}
+        {% assign image_path = post.image.path | default: post.image %}
+        <div class="slide-item">
+          <a href="{{ post.url | relative_url }}">
+            <div class="thumbnail-slide {% if forloop.first %}active{% endif %}"
+            style="background-image: url('{{ image_path | relative_url }}');">
+          </div>
+        </a>
+        <div class="slide-hover-content {% if forloop.first %}active{% endif %}">
+          {{ post.excerpt }}
+        </div>
       </div>
       {% endfor %}
     </div>
     
-    <!-- 이미지 + 태그 나란히 -->
-    <div class="cover-slider-layout">
-      <!-- 이미지 -->
-      <div id="cover-container">
-        <div class="cover-thumbnail">
-          {% for post in pinned_posts limit:5 %}
-          {% assign image_path = post.image.path | default: post.image %}
-          <div class="slide-item">
-            <a href="{{ post.url | relative_url }}">
-              <div class="thumbnail-slide {% if forloop.first %}active{% endif %}"
-                   style="background-image: url('{{ image_path | relative_url }}');">
-              </div>
-            </a>
-            <div class="slide-hover-content {% if forloop.first %}active{% endif %}">
-              {{ post.excerpt }}
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-      
-      
-    </div>
-
+    
+  </div>
+  <!-- 썸네일 오른쪽 시작 -->
+  <div id="thumb-right-side">
     <!-- 태그 -->
     <div class="slide-tags">
       {% for post in pinned_posts limit:5 %}
-        <div class="slide-tags-item {% if forloop.first %}active{% endif %}">
-          {% for tag in post.tags %}
-          {% assign url = tag | slugify | url_encode | prepend: '/tags/' | append: '/' %}
-          <a class="post-tag btn slide-tag" href="{{ url | relative_url }}"><span>#{{ tag }}</span></a>
-          {% endfor %}
-        </div>
+      <div class="slide-tags-item {% if forloop.first %}active{% endif %}">
+        {% for tag in post.tags %}
+        {% assign url = tag | slugify | url_encode | prepend: '/tags/' | append: '/' %}
+        <a class="post-tag btn slide-tag" href="{{ url | relative_url }}"><span>#{{ tag }}</span></a>
+        {% endfor %}
+      </div>
       {% endfor %}
     </div>
+       <!-- 3d 모델 -->
+       <div id="three-container"></div>
+     </div>
+     <!-- 썸네일 오른쪽 끝 -->
   </div>
 
   <!-- 슬라이드 컨트롤 -->
@@ -195,3 +203,4 @@ refactor: true
 {% if paginator.total_pages > 1 %}
   {% include post-paginator.html %}
 {% endif %}
+
