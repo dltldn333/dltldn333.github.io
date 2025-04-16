@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const slides = document.querySelectorAll('.thumbnail-slide');
+  const slideItems = document.querySelectorAll('.slide-item');
   const titles = document.querySelectorAll('.slide-title-item');
   const tagBlocks = document.querySelectorAll('.slide-tags-item');
-  const contents = document.querySelectorAll('.slide-hover-content');
 
   const prevBtn = document.getElementById('prevSlide');
   const nextBtn = document.getElementById('nextSlide');
@@ -13,8 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let interval = setInterval(nextSlide, 5000);
 
   function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === index);
+    slideItems.forEach((item, i) => {
+      item.classList.toggle('active', i === index);
     });
     titles.forEach((title, i) => {
       title.classList.toggle('active', i === index);
@@ -22,25 +21,21 @@ document.addEventListener('DOMContentLoaded', () => {
     tagBlocks.forEach((tags, i) => {
       tags.classList.toggle('active', i === index);
     });
-    contents.forEach((content, i) => {
-      content.classList.toggle('active', i === index);
-    });
   }
 
   function nextSlide() {
-    current = (current + 1) % slides.length;
+    current = (current + 1) % slideItems.length;
     showSlide(current);
   }
 
   function prevSlide() {
-    current = (current - 1 + slides.length) % slides.length;
+    current = (current - 1 + slideItems.length) % slideItems.length;
     showSlide(current);
   }
 
   function togglePlay() {
     playing = !playing;
     toggleBtn.textContent = playing ? '⏸' : '▶';
-
     if (playing) {
       interval = setInterval(nextSlide, 5000);
     } else {
@@ -62,5 +57,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
   toggleBtn.addEventListener('click', togglePlay);
 });
-
-

@@ -83,21 +83,22 @@ refactor: true
       <div class="cover-thumbnail">
         {% for post in pinned_posts limit:5 %}
         {% assign image_path = post.image.path | default: post.image %}
-        <div class="slide-item">
+        <div class="slide-item {% if forloop.first %}active{% endif %}">
           <a href="{{ post.url | relative_url }}">
-            <div class="thumbnail-slide {% if forloop.first %}active{% endif %}"
-            style="background-image: url('{{ image_path | relative_url }}');">
+            <div class="thumbnail-slide"
+                 style="background-image: url('{{ image_path | relative_url }}');">
+            </div>
+          </a>
+          <div class="slide-hover-content">
+            <h4>{{ post.title }}</h4>
+            {{ post.excerpt }}
           </div>
-        </a>
-        <div class="slide-hover-content {% if forloop.first %}active{% endif %}">
-          {{ post.excerpt }}
         </div>
-      </div>
       {% endfor %}
+      
+      </div>
     </div>
-    
-    
-  </div>
+
   <!-- 썸네일 오른쪽 시작 -->
   <div id="thumb-right-side">
     <!-- 태그 -->
