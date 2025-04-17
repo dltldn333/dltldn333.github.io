@@ -41,6 +41,26 @@ layout: compress
             <div class="access">
               {% include_cached update-list.html lang=lang %}
               {% include_cached trending-tags.html lang=lang %}
+              <section>
+                <div class="d-flex flex-column align-items-start ps-2 gap-2 mt-2">
+                  <iframe src="https://ghbtns.com/github-btn.html?user=dltldn333&type=follow&count=true"
+                  frameborder="0"
+                  scrolling="0"
+                  width="160"
+                  height="20"
+                  title="GitHub 팔로우 버튼"
+                  style="filter: grayscale(0.2); border-radius: 4px;"></iframe>
+          
+                  <iframe src="https://ghbtns.com/github-btn.html?user=dltldn333&repo=awesome-project&type=star&count=true"
+                  frameborder="0"
+                  scrolling="0"
+                  width="110"
+                  height="20"
+                  title="GitHub 스타 버튼"
+                  style="filter: grayscale(0.2); border-radius: 4px;"></iframe>
+          
+              </section>
+              
             </div>
 
             {% for _include in layout.panel_includes %}
