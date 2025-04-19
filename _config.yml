@@ -16,7 +16,8 @@ timezone:
 
 title: siwoo.devlog # the main title
 
-tagline:
+tagline: The journey of creation begins with imitation.
+  <br> That’s the essence of my learning.
 
 description: >- # used by seo meta and the atom feed
   이시우의 개발일지
